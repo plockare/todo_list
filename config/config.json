@@ -1,0 +1,14 @@
+{
+  "access_token": "access-token",
+  "db": {
+    "tables": {
+      "access_token": "access_token",
+      "user": "user",
+      "todo_item": "todo_item"
+    }
+  },
+  "uri_segments": {
+    "authentication": "/authentication",
+    "todo_item": "/todo-item"
+  }
+}

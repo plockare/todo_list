@@ -1,0 +1,13 @@
+mysql:
+    image: mysql:5.5.46
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'True'
+    ports:
+      - "3306:3306"
+
+api:
+  build: .
+  volumes:
+    - .:/src:rw
+  ports:
+    - "3600:3600"

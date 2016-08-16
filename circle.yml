@@ -1,0 +1,13 @@
+general:
+  artifacts:
+    - ./coverage
+
+machine:
+  node:
+    version: 5.1.1
+
+test:
+  pre:
+    - cp ./lib/node_modules/config/env.test.json ./lib/node_modules/config/env.json
+  override:
+    - npm run coverage
