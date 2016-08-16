@@ -8,6 +8,6 @@ machine:
 
 test:
   pre:
-    - cp ./lib/node_modules/config/env.test.json ./lib/node_modules/config/env.json
+    - cp ./config/env.test.json ./config/env.json
   override:
     - npm run coverage
