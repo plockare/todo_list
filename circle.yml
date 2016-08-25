@@ -6,12 +6,13 @@ machine:
   node:
     version: 5.1.1
   pre:
-    - mkdir flyway
-    - cd flyway
+    - mkdir /home/ubuntu/flyway
+    - cd /home/ubuntu/flyway
     - wget https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/4.0.3/flyway-commandline-4.0.3-linux-x64.tar.gz
     - tar -xvzf flyway-commandline-4.0.3-linux-x64.tar.gz
     - rm -rf flyway-commandline-4.0.3-linux-x64.tar.gz
-    - PATH=$PATH:/home/ubuntu/flyway/flyway-4.0.3
+  environment:
+    PATH: $PATH:/home/ubuntu/flyway/flyway-4.0.3
 test:
   pre:
     - cp ./config/env.test.json ./config/env.json
