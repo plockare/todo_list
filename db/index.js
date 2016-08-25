@@ -36,13 +36,9 @@ internals._runfile = function _runfile(s, callback) {
 			});
 		},
 		(done)=> {
-			exec('echo $PATH', (e, stdout) => {
-				console.log("path: ", stdout);
-				if (e) return done(e);
-				exec(baseCmd + ' ' + locations + s + ` migrate`, function (err, stdout) {
-					console.log(stdout);
-					done(err);
-				});
+			exec(baseCmd + ' ' + locations + s + ` migrate`, function (err, stdout) {
+				console.log(stdout);
+				done(err);
 			});
 		}
 	], (err)=> {
