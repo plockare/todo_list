@@ -3,18 +3,24 @@ general:
     - ./coverage
 
 machine:
-  node:
-    version: 5.1.1
-  pre:
-    - mkdir /home/ubuntu/flyway
-    - cd /home/ubuntu/flyway
-    - wget https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/4.0.3/flyway-commandline-4.0.3-linux-x64.tar.gz
-    - tar -xvzf flyway-commandline-4.0.3-linux-x64.tar.gz
-    - rm -rf flyway-commandline-4.0.3-linux-x64.tar.gz
-  environment:
-    PATH: $PATH:/home/ubuntu/flyway/flyway-4.0.3
+  services:
+    -docker
+#  node:
+#    version: 5.1.1
+#  pre:
+#    - mkdir /home/ubuntu/flyway
+#    - cd /home/ubuntu/flyway
+#    - wget https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/4.0.3/flyway-commandline-4.0.3-linux-x64.tar.gz
+#    - tar -xvzf flyway-commandline-4.0.3-linux-x64.tar.gz
+#    - rm -rf flyway-commandline-4.0.3-linux-x64.tar.gz
+#  environment:
+#    PATH: $PATH:/home/ubuntu/flyway/flyway-4.0.3
+dependencies:
+  - docker info
+  - docker build -t todo_list -f ./Dockerfile.test .
+
 test:
   pre:
     - cp ./config/env.test.json ./config/env.json
   override:
-    - npm run coverage
+    - docker run -d -p 3600:3600 todo_list
