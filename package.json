@@ -1,24 +1,17 @@
 {
   "name": "todo_list",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
     "forever": "forever ./bin/www",
-    "db-schema": "node db schema",
-    "db-base": "node db base",
-    "db-init": "npm run db-schema && npm run db-base",
-    "db-local": "node db local",
-    "db-dev": "node db dev",
-    "env-local": "npm run db-init && npm run db-local",
-    "env-dev": "npm run db-init && npm run db-dev",
-    "db-test": "node db test",
-    "env-test": "npm run db-init && npm run db-test ",
-    "db-truncate": "node db truncate",
-    "pretest": "npm run db-schema",
+    "env-local": "node db local",
+    "env-dev": "node db dev",
+    "env-test": "node db test",
+    "db-clean": "node db clean",
     "test": "node test/test",
     "mocha": "node node_modules/mocha/bin/mocha",
-    "coverage": "npm install && npm run-script pretest && node ./node_modules/istanbul/lib/cli.js cover -x '**/app.js **/resources/index.js **/modules/**' ./node_modules/mocha/bin/_mocha --  test/files && node ./node_modules/istanbul/lib/cli.js check-coverage"
+    "coverage": "npm install && node ./node_modules/istanbul/lib/cli.js cover -x '**/app.js **/resources/index.js **/modules/**' ./node_modules/mocha/bin/_mocha --  test/files && node ./node_modules/istanbul/lib/cli.js check-coverage"
   },
   "dependencies": {
     "any-promise": "^1.3.0",
