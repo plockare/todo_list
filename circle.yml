@@ -16,8 +16,9 @@ machine:
 #  environment:
 #    PATH: $PATH:/home/ubuntu/flyway/flyway-4.0.3
 dependencies:
-  - docker info
-  - docker build -t todo_list -f ./Dockerfile.test .
+  pre:
+    - docker info
+    - docker build -t todo_list -f ./Dockerfile.test .
 
 test:
   pre:
