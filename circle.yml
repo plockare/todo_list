@@ -6,8 +6,8 @@ machine:
   node:
     version: 5.1.1
   pre:
-    - mkdir /root/flyway
-    - cd /root/flyway
+    - mkdir flyway
+    - cd flyway
     - wget https://bintray.com/artifact/download/business/maven/flyway-commandline-4.0.3-linux-x64.tar.gz
     - tar -xvzf flyway-commandline-4.0.3-linux-x64.tar.gz
     - rm -rf flyway-commandline-4.0.3-linux-x64.tar.gz
