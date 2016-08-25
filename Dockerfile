@@ -7,9 +7,6 @@ VOLUME /src
 
 RUN mkdir /flyway; \
     cd /flyway; \
-    apk update; \
-    apk add ca-certificates wget; \
-    update-ca-certificates; \
     wget https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/4.0.3/flyway-commandline-4.0.3-linux-x64.tar.gz; \
     tar -xvzf flyway-commandline-4.0.3-linux-x64.tar.gz; \
     rm -rf flyway-commandline-4.0.3-linux-x64.tar.gz; \
