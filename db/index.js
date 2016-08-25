@@ -20,20 +20,35 @@ internals._sqldir = __dirname + '/sql';
 
 internals._runfile = function _runfile(s, callback) {
 	console.log('db.schema');
-	var query = '';
 
-	query += 'DROP DATABASE IF EXISTS ' + config.ENV.database.database + '; \n';
-	query += 'CREATE DATABASE IF NOT EXISTS ' + config.ENV.database.database + ' DEFAULT CHARACTER SET utf8; \n';
-	query += 'USE ' + config.ENV.database.database + ';';
+	async.waterfall([
+		(done) => {
+			var query = '';
+			if (s == 'test') {
+				query += 'DROP DATABASE IF EXISTS ' + config.ENV.database.database + '; \n';
+				query += 'CREATE DATABASE IF NOT EXISTS ' + config.ENV.database.database + ' DEFAULT CHARACTER SET utf8; \n';
+				query += 'USE ' + config.ENV.database.database + ';';
+			} else {
+				query += 'CREATE DATABASE IF NOT EXISTS ' + config.ENV.database.database + ' DEFAULT CHARACTER SET utf8; \n';
+			}
+			db.query(query, err=> {
+				done(err)
+			});
+		},
+		(done)=> {
+			exec('echo $PATH', (e, stdout) => {
+				console.log("path: ", stdout);
+				if (e) return done(e);
+				exec(baseCmd + ' ' + locations + s + ` migrate`, function (err, stdout) {
+					console.log(stdout);
+					done(err);
+				});
+			});
+		}
+	], (err)=> {
+		callback(err);
+	})
 
-	db.query(query, function (e, r) {
-		if (e) throw e;
-		exec(baseCmd + ' ' + locations + s + ` migrate`, function (err, stdout) {
-			console.log(stdout);
-			callback(err);
-		});
-
-	});
 };
 
 

@@ -11,7 +11,7 @@
     "db-clean": "node db clean",
     "test": "node test/test",
     "mocha": "node node_modules/mocha/bin/mocha",
-    "coverage": "npm install && npm run-script pretest && node ./node_modules/istanbul/lib/cli.js cover -x '**/app.js **/resources/index.js **/modules/**' ./node_modules/mocha/bin/_mocha --  test/files && node ./node_modules/istanbul/lib/cli.js check-coverage"
+    "coverage": "npm install && node ./node_modules/istanbul/lib/cli.js cover -x '**/app.js **/resources/index.js **/modules/**' ./node_modules/mocha/bin/_mocha --  test/files && node ./node_modules/istanbul/lib/cli.js check-coverage"
   },
   "dependencies": {
     "any-promise": "^1.3.0",

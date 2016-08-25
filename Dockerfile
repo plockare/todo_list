@@ -1,9 +1,22 @@
-FROM mhart/alpine-node
+FROM node:5.12.0
 MAINTAINER Karel Ploc "karelploc@gmail.com"
 # define working directory
 
 WORKDIR /src
 VOLUME /src
+
+RUN mkdir /flyway; \
+    cd /flyway; \
+    apk update; \
+    apk add ca-certificates wget; \
+    update-ca-certificates; \
+    wget https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/4.0.3/flyway-commandline-4.0.3-linux-x64.tar.gz; \
+    tar -xvzf flyway-commandline-4.0.3-linux-x64.tar.gz; \
+    rm -rf flyway-commandline-4.0.3-linux-x64.tar.gz; \
+    cd /src;
+
+
+ENV PATH "$PATH:/flyway/flyway-4.0.3"
 
 # start app
 CMD npm install && npm install -g forever && npm run env-dev && npm run forever
