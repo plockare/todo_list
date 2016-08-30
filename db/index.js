@@ -10,7 +10,7 @@ var db = mysql.createConnection({
 	password: config.ENV.database.password,
 	multipleStatements: true
 });
-const baseCmd = `flyway -user=${config.ENV.database.user} -password=${config.ENV.database.password} -url=jdbc:mysql://${config.ENV.database.host}/${config.ENV.database.database}`;
+const baseCmd = `flyway -user=${config.ENV.database.user} -password=${config.ENV.database.password} -url=jdbc:mysql://${config.ENV.database.host} -schemas=${config.ENV.database.database}`;
 const locations = `-locations=filesystem:${__dirname}/sql,filesystem:${__dirname}/`;
 
 var method = process.argv[2];
