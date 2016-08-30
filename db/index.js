@@ -23,14 +23,7 @@ internals._runfile = function _runfile(s, callback) {
 
 	async.waterfall([
 		(done) => {
-			var query = '';
-			if (s == 'test') {
-				query += 'DROP DATABASE IF EXISTS ' + config.ENV.database.database + '; \n';
-				query += 'CREATE DATABASE IF NOT EXISTS ' + config.ENV.database.database + ' DEFAULT CHARACTER SET utf8; \n';
-				query += 'USE ' + config.ENV.database.database + ';';
-			} else {
-				query += 'CREATE DATABASE IF NOT EXISTS ' + config.ENV.database.database + ' DEFAULT CHARACTER SET utf8; \n';
-			}
+			var query = 'CREATE DATABASE IF NOT EXISTS ' + config.ENV.database.database + ' DEFAULT CHARACTER SET utf8; \n';
 			db.query(query, err=> {
 				done(err)
 			});

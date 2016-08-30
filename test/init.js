@@ -65,6 +65,11 @@ object.resetDatabase = function resetDatabase(done) {
 
 		async.waterfall([
 			function (done) {
+				npm.commands.run(['db-clean'], function (err, data) {
+					done(err);
+				});
+			},
+			function (done) {
 				npm.commands.run(['env-test'], function (err, data) {
 					done(err);
 				});
