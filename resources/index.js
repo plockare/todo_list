@@ -1,3 +1,5 @@
+'use strict';
+
 var log = require(CONFIG.module_path + '/log');
 
 module.exports = function (app) {
