@@ -9,7 +9,12 @@ function UserModel(sequelize, DataTypes) {
 	var User = sequelize.define(CONFIG.db.tables.user, {
 		user_id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
 		email: DataTypes.STRING,
-		password: DataTypes.STRING,
+		password: {
+			type: DataTypes.STRING,
+			set: function (val) {
+				this.setDataValue('password', encryptPassword(this.getDataValue('email'), val));
+			}
+		},
 		name: DataTypes.STRING,
 		name_prefix: DataTypes.STRING,
 		middle_name: DataTypes.STRING,

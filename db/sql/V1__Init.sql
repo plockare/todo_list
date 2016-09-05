@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `name_prefix` varchar(30) DEFAULT NULL COMMENT 'Title before name',
   `name_suffix` varchar(30) DEFAULT NULL COMMENT 'Title after name',
   `email` varchar(50) NOT NULL COMMENT 'Email of the user',
-  `password` text NULL COMMENT 'Password of the user',
+  `password` text NOT NULL COMMENT 'Password of the user',
   `phone_number` varchar(20) DEFAULT NULL COMMENT 'Phone number of the user',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,

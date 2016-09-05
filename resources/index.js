@@ -4,7 +4,9 @@ module.exports = function (app) {
 
 	if (CONFIG.ENV.DEBUG) {
 		app.use(function (req, res, next) {
-			log.info("Request to: (" + req.method + ") " + req.url, req.body);
+			let payload = req.body;
+			req.body && req.body.password && (payload = '{hidden content}');
+			log.info("Request to: (" + req.method + ") " + req.url, payload);
 			next();
 		});
 	}
