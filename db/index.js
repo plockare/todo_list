@@ -1,15 +1,9 @@
-var mysql = require('mysql');
 var path = require('path');
 var fs = require('fs');
 var async = require('async');
 var config = require("../config");
 var exec = require('child_process').exec;
-var db = mysql.createConnection({
-	host: config.ENV.database.host,
-	user: config.ENV.database.user,
-	password: config.ENV.database.password,
-	multipleStatements: true
-});
+
 const baseCmd = `flyway -user=${config.ENV.database.user} -password=${config.ENV.database.password} -url=jdbc:mysql://${config.ENV.database.host} -schemas=${config.ENV.database.database}`;
 const locations = `-locations=filesystem:${__dirname}/sql,filesystem:${__dirname}/`;
 
@@ -20,24 +14,10 @@ internals._sqldir = __dirname + '/sql';
 
 internals._runfile = function _runfile(s, callback) {
 	console.log('db.schema');
-
-	async.waterfall([
-		(done) => {
-			var query = 'CREATE DATABASE IF NOT EXISTS ' + config.ENV.database.database + ' DEFAULT CHARACTER SET utf8; \n';
-			db.query(query, err=> {
-				done(err)
-			});
-		},
-		(done)=> {
-			exec(baseCmd + ' ' + locations + s + ` migrate`, function (err, stdout) {
-				console.log(stdout);
-				done(err);
-			});
-		}
-	], (err)=> {
+	exec(baseCmd + ' ' + locations + s + ` migrate`, function (err, stdout) {
+		console.log(stdout);
 		callback(err);
-	})
-
+	});
 };
 
 
