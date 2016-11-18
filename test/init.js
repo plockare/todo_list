@@ -2,8 +2,7 @@ import app from '../src/app';
 import config from 'cfg-loader';
 
 var request = require('supertest')
-  , async = require("async")
-  , mysql = require("mysql");
+  , async = require("async");
 
 var object = {
   app,
