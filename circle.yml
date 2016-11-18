@@ -4,7 +4,7 @@ general:
 
 machine:
   node:
-    version: 5.1.1
+    version: 6.7.0
   pre:
     - wget https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/4.0.3/flyway-commandline-4.0.3-linux-x64.tar.gz
     - tar -xvzf flyway-commandline-4.0.3-linux-x64.tar.gz
@@ -13,7 +13,5 @@ machine:
     PATH: $PATH:/home/ubuntu/flyway-4.0.3
 
 test:
-  pre:
-    - cp ./config/env.test.json ./config/env.json
   override:
     - npm run coverage

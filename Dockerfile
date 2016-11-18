@@ -15,5 +15,9 @@ RUN mkdir /flyway; \
 
 ENV PATH "$PATH:/flyway/flyway-4.0.3"
 
+RUN npm install
+RUN npm install -g forever
+RUN npm compile
+
 # start app
-CMD npm install && npm install -g forever && npm run env-dev && npm run forever
+CMD npm run forever

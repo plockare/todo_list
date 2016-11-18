@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node ./build/bin/www",
     "dev": "babel-node ./src/bin/www",
-    "forever": "forever ./bin/www",
+    "forever": "forever ./build/bin/www",
     "env-local": "node db local",
     "env-dev": "node db dev",
     "env-test": "node db test",
