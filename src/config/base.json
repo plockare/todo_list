@@ -1,0 +1,22 @@
+{
+  "server": {
+    "port": 8080,
+    "show_logs": true,
+    "password_reset_expiration": 3600,
+    "access_token": "access-token",
+    "expiration_in_seconds": 432000
+  },
+  "postgres": {
+    "show_logs_db": true,
+    "host": "localhost",
+    "user": "root",
+    "password": "",
+    "database": "todo_list",
+    "pool": {
+      "max": 1,
+      "min": 0,
+      "idle": 10000
+    },
+    "dialect": "mysql"
+  }
+}
