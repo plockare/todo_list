@@ -3,7 +3,15 @@ MAINTAINER Karel Ploc "karelploc@gmail.com"
 # define working directory
 
 WORKDIR /src
-VOLUME /src
+
+ADD package.json /src/package.json
+
+RUN npm install
+RUN npm install -g forever
+
+ADD . /src
+
+RUN npm run compile
 
 RUN mkdir /flyway; \
     cd /flyway; \
@@ -15,9 +23,5 @@ RUN mkdir /flyway; \
 
 ENV PATH "$PATH:/flyway/flyway-4.0.3"
 
-RUN npm install
-RUN npm install -g forever
-RUN npm run compile
-
 # start app
-CMD npm run forever
+CMD npm run env-$NODE_ENV && npm run forever | ./node_modules/bunyan/bin/bunyan
