@@ -4,7 +4,7 @@ var async = require('async');
 var config = require('cfg-loader').default;
 var exec = require('child_process').exec;
 
-const baseCmd = `flyway -user=${config.postgres.user} -password=${config.postgres.password} -url=jdbc:mysql://${config.postgres.host} -schemas=${config.postgres.database}`;
+const baseCmd = `flyway -user=${config.database.user} -password=${config.database.password} -url=jdbc:mysql://${config.database.host} -schemas=${config.database.database}`;
 const locations = `-locations=filesystem:${__dirname}/sql,filesystem:${__dirname}/`;
 
 var internals = {};
