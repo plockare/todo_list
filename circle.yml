@@ -18,4 +18,4 @@ database:
 
 test:
   override:
-    - npm run coverage
+    - npm run coverage | ./node_modules/bunyan/bin/bunyan
