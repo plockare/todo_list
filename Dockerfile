@@ -1,4 +1,4 @@
-FROM node:5.12.0
+FROM node:6.7.0
 MAINTAINER Karel Ploc "karelploc@gmail.com"
 # define working directory
 
@@ -17,7 +17,7 @@ ENV PATH "$PATH:/flyway/flyway-4.0.3"
 
 RUN npm install
 RUN npm install -g forever
-RUN npm compile
+RUN npm run compile
 
 # start app
 CMD npm run forever

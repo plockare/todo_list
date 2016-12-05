@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "compile": "rm -rf ./build && babel -d ./build ./src --copy-files",
     "start": "node ./build/bin/www",
     "dev": "babel-node ./src/bin/www",
     "forever": "forever ./build/bin/www",
@@ -18,7 +19,7 @@
   "dependencies": {
     "body-parser": "~1.13.2",
     "bunyan": "^1.8.4",
-    "cfg-loader": "0.0.5",
+    "cfg-loader": "0.0.6",
     "cookie-parser": "~1.3.5",
     "dottie": "^1.1.1",
     "express": "~4.13.1",
