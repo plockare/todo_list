@@ -11,7 +11,7 @@ class ModelManager {
 
   init(config, logger, resourcePath) {
     this._config = config;
-    const configuration = config.postgres;
+    const configuration = config.database;
     configuration.define = {freezeTableName: true, underscored: true, paranoid: true};
     configuration.logging = configuration.show_logs_db ? logger.info.bind(logger) : false;
     this._Sequelize = Sequelize;
