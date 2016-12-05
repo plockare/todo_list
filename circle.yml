@@ -5,8 +5,6 @@ general:
 machine:
   node:
     version: 6.7.0
-  services:
-    - mysql
   pre:
     - wget https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/4.0.3/flyway-commandline-4.0.3-linux-x64.tar.gz
     - tar -xvzf flyway-commandline-4.0.3-linux-x64.tar.gz
@@ -16,7 +14,7 @@ machine:
 
 database:
   override:
-    - createdb todo_list_test
+    - mysql -e "create database todo_list_test"
 
 test:
   override:
