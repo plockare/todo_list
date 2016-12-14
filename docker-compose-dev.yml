@@ -1,0 +1,19 @@
+mysql:
+    image: mysql:5.5.46
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'True'
+    ports:
+      - "3306:3306"
+
+api:
+  build: .
+  dockerfile: Dockerfile-dev
+  environment:
+    - NODE_ENV=dev
+    - DATABASE__HOST=mysql
+  ports:
+    - "3600:3600"
+  volumes:
+  - ./src:/src/src:rw
+  links:
+    - mysql

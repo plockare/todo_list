@@ -16,7 +16,7 @@ import modelManager from '../../modules/modelManager';
     }
   ],
   defaultScope: {
-    attributes: ['user_id', 'name', 'surname', 'email', 'name_prefix', 'name_suffix', 'middle_name']
+    attributes: ['id', 'name', 'surname', 'email', 'name_prefix', 'name_suffix', 'middle_name']
   }
 })
 @Attributes({
