@@ -10,7 +10,7 @@ class Policy {
   isSignedIn = (req, res, next) => {
     const access_token = req.headers[this.config.server.access_token] || req.query[this.config.server.access_token] || false;
     if (!access_token) {
-      return next(new this.Error(this.errorMessages.no_access_token, 400));
+      return next(new this.Error(this.errorMessages.no_access_token, 401));
     }
     const authModel = this.modelManager.getModel('access_token');
     authModel

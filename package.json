@@ -5,7 +5,8 @@
   "scripts": {
     "compile": "rm -rf ./build && babel -d ./build ./src --copy-files",
     "start": "node ./build/bin/www",
-    "dev": "babel-node ./src/bin/www",
+    "dev": "nodemon ./src/bin/www --exec babel-node",
+    "docker-dev": "docker-compose -f docker-compose-dev.yml up",
     "forever": "forever ./build/bin/www.js",
     "env-local": "babel-node db local",
     "env-dev": "babel-node db dev",

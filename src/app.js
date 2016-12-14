@@ -23,6 +23,17 @@ app.use(cookieParser());
 modelManager.init(config, logger, path.join(__dirname, 'resources'));
 policy.init(config, modelManager, error, errorMessages);
 
+if (process.env.NODE_ENV === 'dev') {
+  //CORS middleware
+  const allowCrossDomain = (req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, access-token');
+    next();
+  };
+  app.use(allowCrossDomain);
+}
+
 resources(app);
 
 export default app;

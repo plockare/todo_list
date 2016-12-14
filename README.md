@@ -1,8 +1,6 @@
 # Todo List [![CircleCI](https://circleci.com/gh/plockare/todo_list/tree/master.svg?style=svg)](https://circleci.com/gh/plockare/todo_list/tree/master)
 
-[Live example](http://tondahack.github.io/react-stack/)
-
-[Frontend react stack](https://github.com/TondaHack/react-stack/)
+[Frontend react stack](https://github.com/TondaHack/todo_list_react/)
 
 ##Prerequisites
 - Node.js
